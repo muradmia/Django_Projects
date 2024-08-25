@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello this is App page</h1>
+    <h1>name : {{author}}</h1>
+    <h1>self : {{self}}</h1>
+    <h1>list : {{lst}}</h1>
+    <h1>age : {{age}}</h1>
+
+    {% if age == 20%}
+    <h1>hey i did is</h1>
+    {% else %}
+    <h1> I fail </h1>
+    {% endif %}
+
+    {% for l in lst %}
+    <h1>Num : {{l}}</h1>
+    {% endfor %}
+
+    {% comment %} this is list {% endcomment %}
+    {% for i in courses %}
+    <h1>ID : {{i.Id}}</h1>
+    <h1>ID : {{i.Name}}</h1>
+    {% endfor %}
+</body>
+</html>

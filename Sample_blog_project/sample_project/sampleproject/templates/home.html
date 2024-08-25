@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+  {% for  post in data%}
+  <div class="card mb-3 mt-2" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">{{post.author}}</h5>
+      <h5 class="card-title">Title : {{post.title}}</h5>
+      <p class="card-text">Content : {{post.content}}</p>
+      <p>Author : {{post.author.name}}</p>
+      <button class="btn btn-primary mt-2">{{category}}</button>
+      <a href="{% url 'edit' post.id %}" class="btn mt-2 btn-primary">Edit</a>
+      <a href="{% url 'delete' post.id %}" class="btn mt-2 btn-danger">Delete</a>
+    </div>
+  </div>
+  {% endfor %}
+{% endblock %}
