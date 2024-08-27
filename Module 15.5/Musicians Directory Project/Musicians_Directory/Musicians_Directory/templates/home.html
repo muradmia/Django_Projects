@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% comment %} <h1>this is home page</h1> {% endcomment %}
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id </th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Instrument Type</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Album Name</th>
+        <th scope="col">Release Date</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    {% for i in data%}
+    <tbody>
+      <tr>
+        <th scope="row">{{i.id}}</th>
+        <td>{{i.relations.first_name}}</td>
+        <td >{{i.relations.last_name}}</td>
+        <td>{{i.relations.email}}</td>
+        <td>{{i.relations.instrument_type}}</td>
+        <td>{{i.relations.phone}}</td>
+        <td>{{i.album_name}}</td>
+        <td>{{i.album_relese_date}}</td>
+        <td> <a class = "btn btn-primary" href="{% url 'edit' i.id %}">Edit</a> <a class = "btn btn-danger" href="{% url 'delete' i.id %}"">Delete</a> 
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+
+{% endblock %}
