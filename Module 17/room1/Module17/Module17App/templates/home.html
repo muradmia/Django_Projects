@@ -2,23 +2,7 @@
 
 {% block content%}
 {% comment %} <h1>this is home page</h1> {% endcomment %}
-{% if messages %}
-{% for m in messages %}
-<h2 style = "class :success; background-color : red; color : white;width : 100%; margin : 0 auto;" >{{m}}</h2>
-{% endfor%}
-{% endif %}
-{% load crispy_forms_tags %}
-<form method="post" action="" style = "width: 50%; margin : 0 auto" novalidate>
-    {% csrf_token %}
-    {{form | crispy}}
- 
-{% comment %}     
-    
-    {% for fm in form %}
-    {{fm.label_tag}}
-    {{fm}}
-    {{fm.errors | striptags}}
-    {% endfor %} {% endcomment %}
-    <button class="btn btn-primary"type="submit">Submit</button>
-</form>
+{% comment %} <h2 style = "class :success; background-color : red; color : white;width : 100%; margin : 0 auto;" >{{m}}</h2> {% endcomment %}
+
+<h1>Login success</h1>
 {% endblock %}
