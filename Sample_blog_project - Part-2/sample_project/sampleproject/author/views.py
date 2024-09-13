@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from . forms import Registration_form,Change_userdata
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.forms import AuthenticationForm,PasswordChangeForm
+from django.contrib.auth import authenticate,login,logout,update_session_auth_hash
 from . import forms
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -52,9 +52,21 @@ def Change_userData(request):
     if request.method == 'POST':
         form = Change_userdata(request.POST,instance = request.user)
         if form.is_valid():
-            messages.success("Account Update Success")
+            messages.success(request,"Account Update Success")
             form.save()
             return redirect('profile')
     else:
         form = Change_userdata(instance = request.user)
     return render(request,'profile.html',{'form' : form})
+
+def pass_change(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, data=request.POST)
+        if form.is_valid():
+            messages.success(request,"Password Update  Success")
+            form.save()
+            update_session_auth_hash(request,form.user)
+            return redirect('profile')
+    else:
+        form = PasswordChangeForm(user = request.user)
+    return render(request,'pass_change.html',{'form' : form})
