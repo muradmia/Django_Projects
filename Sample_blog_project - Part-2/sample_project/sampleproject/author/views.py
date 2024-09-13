@@ -48,7 +48,7 @@ def login_user(request):
         form = AuthenticationForm()
     return render(request,'register.html',{'form' : form,'type' : 'Login'})
 @login_required
-def Change_userData(request):
+def edit_profile(request):
     if request.method == 'POST':
         form = Change_userdata(request.POST,instance = request.user)
         if form.is_valid():
@@ -57,8 +57,11 @@ def Change_userData(request):
             return redirect('profile')
     else:
         form = Change_userdata(instance = request.user)
-    return render(request,'profile.html',{'form' : form})
+    return render(request,'update_profile.html',{'form' : form})
 
+@login_required
+def Change_userData(request):
+    return render(request,'profile.html')
 def pass_change(request):
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, data=request.POST)

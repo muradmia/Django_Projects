@@ -10,8 +10,10 @@
       <p class="card-text">Content : {{post.content}}</p>
       <p>Author : {{post.author.name}}</p>
       <button class="btn btn-primary mt-2">{{category}}</button>
+      {% if request.user.is_authenticated %}
       <a href="{% url 'edit' post.id %}" class="btn mt-2 btn-primary">Edit</a>
       <a href="{% url 'delete' post.id %}" class="btn mt-2 btn-danger">Delete</a>
+      {% endif %}
     </div>
   </div>
   {% endfor %}

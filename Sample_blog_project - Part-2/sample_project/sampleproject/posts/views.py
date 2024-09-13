@@ -6,6 +6,8 @@ def add_post(request):
     if request.method == 'POST':
         form = forms.post_form(request.POST)
         if form.is_valid():
+            # form.cleaned_data['author'] = request.user
+            form.instance.author = request.user
             form.save()
     else:
         form = forms.post_form()
