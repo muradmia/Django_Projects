@@ -1,0 +1,10 @@
+{% extends 'home.html' %}
+
+{% block content %}
+{%if messages %}
+{% for message in messages %}
+<h1>{{message}}</h1>
+{% endfor %}
+{% endif %}
+<h1>This is profile page</h1>
+{% endblock %}
