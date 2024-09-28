@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('App',include('App.urls')),
     path('Profile',include('Profile.urls')),
+    path('post',include('post.urls')),
     path('',views.home,name = 'home'),
     
 ]
