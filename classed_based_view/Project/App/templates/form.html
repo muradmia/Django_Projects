@@ -1,0 +1,11 @@
+{% extends "home.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form method="post" style = "width : 50%; margin:0 auto;">
+{% csrf_token %}
+{{form | crispy}}
+<button class="btn btn-primary" type="submit">Signup</button>
+</form>
+
+<a href = "{% url 'login'%}">login</a>
+ {% endblock %}
