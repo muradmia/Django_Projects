@@ -1,0 +1,9 @@
+{% extends 'home.html' %}
+{% block content %}
+
+<img src="{{post_model.image.url}}" alt="Hi!"/>
+<h1>{{post_model.id}}</h1>
+<h1>{{post_model.dc}}</h1>
+<a class="btn btn-primary" href="{% url 'edit_post' post_model.id %}">edit post</a>
+<a href="{% url 'delete_post' post_model.id %}" class="btn btn-danger">delete</a>
+{% endblock %}
