@@ -1,7 +1,11 @@
 from django.shortcuts import render
-from django.views.generic import FormView
-from .form import User_Registaion_form
+from django.views.generic import FormView,CreateView
+from .form import User_Registaion_form,demo_model
 from django.contrib.auth import login
+from .models import demo
+from . import models
+from . import form
+from django.urls import reverse_lazy
 # Create your views here.
 def account_create(request):
     return render(request,'create_account.html')
@@ -11,6 +15,16 @@ class UserRegestation(FormView):
     form_class = User_Registaion_form
     # success_url = 'base'
     def form_valid(self,form):
-        ser = form.save()
-        login(ser)
+        user = form.save()
+        login(user)
         return super().form_valid(form)
+
+class demoq(CreateView):
+    model = models.demo
+    template_name = 'demo.html'
+    form_class = form.demo_model
+    success_url = reverse_lazy('base')
+    def form_valid(self,form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+    

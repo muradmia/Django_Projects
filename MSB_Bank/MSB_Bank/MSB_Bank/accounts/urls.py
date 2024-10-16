@@ -18,5 +18,6 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 urlpatterns = [
-    path('account_create/',views.UserRegestation.as_view(), name='account_create')
+    path('account_create/',views.UserRegestation.as_view(), name='account_create'),
+    path('demo/',views.demoq.as_view(), name='demo')
 ]

@@ -1,5 +1,5 @@
 from django import forms
-from .models import User_Bank_Account,User_address
+from .models import User_Bank_Account,User_address,demo
 from .constants import ACCOUNT_TYPE,GENDER
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -13,7 +13,8 @@ class User_Registaion_form(UserCreationForm):
     city = forms.CharField(max_length=30)
     class Meta:
         model = User
-        fields=['username', 'password1','password2', 'first_name','last_name', 'email','gender','postal_code','country','city']
+        # fields=['username', 'password1','password2', 'first_name','last_name', 'email','gender','postal_code','country','city']
+        fields = ['username','first_name','last_name','email']
 
     def save(self,commit= True):
         our_user = super().save()#ami db te save korbo na akon
@@ -38,6 +39,9 @@ class User_Registaion_form(UserCreationForm):
                 gender = gender,
                 account_no = 10000+our_user.id
             )
-
             return our_user
 
+class demo_model(forms.ModelForm):
+    class Meta:
+        model = demo
+        fields ='__all__'

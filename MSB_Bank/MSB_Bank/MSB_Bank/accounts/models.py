@@ -26,3 +26,7 @@ class User_address(models.Model):
 
     def __str__(self):
         return f'Email: {self.user.email}'
+
+class demo(models.Model):
+    name = models.CharField(max_length=15)
+    email = models.EmailField()
