@@ -13,8 +13,9 @@ def account_create(request):
 class UserRegestation(FormView):
     template_name = 'create_account.html'
     form_class = User_Registaion_form
-    # success_url = 'base'
+    success_url = reverse_lazy('base')
     def form_valid(self,form):
+        # form.instance.author = self.request.use
         user = form.save()
         login(user)
         return super().form_valid(form)
