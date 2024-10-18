@@ -10,14 +10,14 @@ class User_Registaion_form(UserCreationForm):
     city = forms.CharField(max_length=100)
     postal_code = forms.IntegerField()
     country = forms.CharField(max_length=30)
-    city = forms.CharField(max_length=30)
+    # city = forms.CharField(max_length=30)
     class Meta:
         model = User
-        fields=['username', 'password1','password2', 'first_name','last_name', 'email','gender','postal_code','country','city']
+        fields=['username', 'password1','password2', 'first_name','last_name', 'email','gender','postal_code','country','city','address']
         # fields = ['username','first_name','last_name','email']
 
     def save(self,commit= True):
-        our_user = super().save()#ami db te save korbo na akon
+        our_user = super().save()
         if commit == True:
             our_user.save()#user ar model ar data save korlam
             gender = self.cleaned_data.get('gender')

@@ -16,8 +16,9 @@ class UserRegestation(FormView):
     success_url = reverse_lazy('base')
     def form_valid(self,form):
         # form.instance.author = self.request.use
+        print(form.cleaned_data)
         user = form.save()
-        login(user)
+        login(self.request,user)
         return super().form_valid(form)
 
 class demoq(CreateView):
