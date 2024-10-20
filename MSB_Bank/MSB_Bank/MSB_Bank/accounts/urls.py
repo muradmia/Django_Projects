@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 urlpatterns = [
-    path('account_create/',views.UserRegestation.as_view(), name='account_create'),
-    path('demo/',views.demoq.as_view(), name='demo')
+    path('account_create/',views.User_Registaion_form.as_view(), name='account_create'),
+    path('login/',views.login1.as_view(), name='login'),
+    # path('demo/',views.demoq.as_view(), name='demo')
 ]

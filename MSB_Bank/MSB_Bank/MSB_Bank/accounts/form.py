@@ -40,8 +40,3 @@ class User_Registaion_form(UserCreationForm):
                 account_no = 10000+our_user.id
             )
             return our_user
-
-class demo_model(forms.ModelForm):
-    class Meta:
-        model = demo
-        fields ='__all__'

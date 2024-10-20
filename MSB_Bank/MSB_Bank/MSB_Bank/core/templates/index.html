@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>This is inside html</h1>
+<div class="text-blue-900 my-auto font-black px-5">Welcome, {{ request.user.first_name }} (balance : {{.balance}}) </div>
+{% endblock %}
